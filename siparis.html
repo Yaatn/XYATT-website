@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="XYATT — Sipariş formu. Ürününü seç, teslimat bilgilerini gir.">
+<title>Sipariş Formu — XYATT</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+:root{--bg:#07090b;--panel:#0d1114;--line:#20262b;--muted:#89939a;--text:#eef2f4;--acid:#d8ff3e;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.container{width:min(1400px,calc(100% - 48px));margin:auto}
+header{height:78px;border-bottom:1px solid var(--line);background:rgba(7,9,11,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:20}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;width:150px;height:44px;overflow:hidden}.logo img{display:block;width:150px;height:auto;max-width:none}
+nav{display:flex;gap:30px;color:#9da6ac;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+nav a:hover{color:#fff}
+.nav-cta{border:1px solid #394147;padding:12px 17px;font-size:11px;font-weight:700;letter-spacing:.08em}
+.nav-cta:hover{border-color:var(--acid);color:var(--acid)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font:10px 'DM Mono',monospace;color:var(--acid);letter-spacing:.14em;text-transform:uppercase}
+h2{font:800 clamp(32px,4.5vw,58px)/1.02 Sora,sans-serif;letter-spacing:-.06em;margin:14px 0 20px}
+.lead{max-width:620px;color:#929ca3;font-size:16px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 19px;border:1px solid #394147;font:700 11px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.btn:hover{border-color:var(--acid)}
+footer{padding:36px 0;color:#69737a;font-size:12px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-logo{display:flex;align-items:center;width:125px}.footer-logo img{width:125px;height:auto;display:block}
+
+/* ORDER FORM */
+.order-hero{padding:52px 0 36px}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:#7d878e;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+.back-link:hover{color:var(--acid)}
+.order-body{padding-top:0;border-bottom:0}
+.order-grid{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+.order-main{display:flex;flex-direction:column;gap:44px}
+.block-label{font:10px 'DM Mono',monospace;color:var(--acid);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
+
+.line-item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;flex-wrap:wrap;margin-bottom:12px}
+.line-item select{flex:1;min-width:220px}
+.line-item .qty{width:64px}
+.line-item .line-total{font:700 15px Sora,sans-serif;min-width:88px;text-align:right}
+.remove-line{background:none;border:none;color:#69737a;font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}
+.remove-line:hover{color:#eb5757}
+
+select,input[type=text],input[type=tel],input[type=email],input[type=number],textarea{
+  background:var(--bg);border:1px solid var(--line);color:var(--text);
+  padding:12px 14px;border-radius:10px;font:14px Inter,sans-serif;width:100%;
+}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acid)}
+textarea{resize:vertical;min-height:84px}
+
+.add-line{background:transparent;border:1px dashed #394147;color:#aab2b7;padding:14px 18px;font:700 11px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;text-align:center;border-radius:10px}
+.add-line:hover{border-color:var(--acid);color:var(--acid)}
+
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px;font-size:13px;color:#aab2b7}
+.field.full{grid-column:1/-1}
+
+.order-side{position:sticky;top:98px}
+.summary-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px}
+.summary-line{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#aab2b7;padding:10px 0;border-bottom:1px solid var(--line)}
+.summary-line span:last-child{color:var(--text);white-space:nowrap}
+.summary-empty{color:#69737a;font-size:13px;padding:10px 0}
+.summary-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font:700 22px Sora,sans-serif}
+.pay-note{margin-top:30px;margin-bottom:12px}
+.pay-btn{width:100%;padding:16px;background:#171b1e;color:#69737a;border:1px solid var(--line);font:800 12px 'DM Mono',monospace;letter-spacing:.08em;border-radius:10px;cursor:not-allowed}
+.pay-explainer{margin-top:12px;font-size:12px;line-height:1.6;color:#69737a}
+
+@media(max-width:900px){
+.container{width:min(100% - 32px,700px)}
+header{height:70px}
+nav{display:none}
+section{padding:48px 0}
+.order-grid{grid-template-columns:1fr}
+.order-side{position:static}
+.field-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+.container{width:calc(100% - 24px)}
+.nav-cta{padding:10px 12px}
+.logo{width:130px;height:40px}.logo img{width:130px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html" aria-label="XYATT"><img src="data:image/png;base64,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" alt="XYATT"></a>
+    <nav><a href="index.html#neden">Neden XYATT</a><a href="index.html#modeller">Modeller</a><a href="index.html#sistem">Sistem</a></nav>
+    <a class="nav-cta" href="index.html#modeller">MODELLERİ KEŞFET →</a>
+  </div>
+</header>
+
+<main>
+  <section class="order-hero">
+    <div class="container">
+      <a class="back-link" href="index.html#modeller">← MODELLERE DÖN</a>
+      <div class="eyebrow">SİPARİŞ FORMU</div>
+      <h2>Siparişini<br>tamamla.</h2>
+      <p class="lead">Ürün seçimini onayla ve teslimat bilgilerini gir. Ödeme adımı, entegrasyon onayı tamamlandığında aktif olacak.</p>
+    </div>
+  </section>
+
+  <section class="order-body">
+    <div class="container order-grid">
+      <div class="order-main">
+        <div>
+          <div class="block-label">Ürünler</div>
+          <div id="lineItems"></div>
+          <button type="button" class="add-line" id="addLine">+ BAŞKA ÜRÜN EKLE</button>
+        </div>
+
+        <div>
+          <div class="block-label">Teslimat Bilgileri</div>
+          <div class="field-grid">
+            <label class="field">Ad Soyad<input type="text" id="fullName" placeholder="Adınız Soyadınız"></label>
+            <label class="field">Telefon<input type="tel" id="phone" placeholder="05XX XXX XX XX"></label>
+            <label class="field full">E-posta<input type="email" id="email" placeholder="ornek@eposta.com"></label>
+            <label class="field">İl<input type="text" id="city" placeholder="İstanbul"></label>
+            <label class="field">İlçe<input type="text" id="district" placeholder="Kadıköy"></label>
+            <label class="field full">Açık Adres<textarea id="address" placeholder="Mahalle, sokak, bina no, daire no..."></textarea></label>
+          </div>
+        </div>
+      </div>
+
+      <aside class="order-side">
+        <div class="summary-card">
+          <div class="block-label">Sipariş Özeti</div>
+          <div id="summaryLines"></div>
+          <div class="summary-total"><span>Toplam</span><span id="summaryTotal">0 TL</span></div>
+          <div class="block-label pay-note">Ödeme Yöntemi</div>
+          <button type="button" class="pay-btn" disabled>KART İLE ÖDE</button>
+          <p class="pay-explainer">Ödeme altyapısı onay sürecinde. Aktif olduğunda bu adımdan güvenli kart ödemesi alınacak.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row"><div class="footer-logo"><img src="data:image/png;base64,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" alt="XYATT"></div><div>© 2026 XYATT Electronics</div><div>2 YIL GARANTİ · 10–15 GÜN TESLİMAT · XYATT</div></div>
+</footer>
+
+<script>
+const PRODUCTS = [
+  {sku:'double-15-6', label:'DOUBLE SCREEN — 15.6″', price:8400},
+  {sku:'triple-14',   label:'TRIPLE SCREEN — 14″',   price:17500},
+  {sku:'triple-15-6', label:'TRIPLE SCREEN — 15.6″', price:19000},
+  {sku:'triple-18-5', label:'TRIPLE SCREEN — 18.5″', price:23500},
+  {sku:'quad-14',     label:'QUAD SCREEN — 14″',     price:22800},
+  {sku:'quad-15-6',   label:'QUAD SCREEN — 15.6″',   price:25500},
+  {sku:'quad-18-5',   label:'QUAD SCREEN — 18.5″',   price:29200},
+];
+
+function findProduct(sku){ return PRODUCTS.find(p => p.sku === sku) || PRODUCTS[0]; }
+function fmtTL(n){ return n.toLocaleString('tr-TR') + ' TL'; }
+
+const lineItemsEl = document.getElementById('lineItems');
+const summaryLinesEl = document.getElementById('summaryLines');
+const summaryTotalEl = document.getElementById('summaryTotal');
+let lineCount = 0;
+
+function optionsHTML(selectedSku){
+  return PRODUCTS.map(p =>
+    `<option value="${p.sku}" ${p.sku===selectedSku?'selected':''}>${p.label} — ${fmtTL(p.price)}</option>`
+  ).join('');
+}
+
+function addLine(sku){
+  lineCount++;
+  const id = 'line' + lineCount;
+  const row = document.createElement('div');
+  row.className = 'line-item';
+  row.dataset.id = id;
+  row.innerHTML = `
+    <select class="line-product">${optionsHTML(sku)}</select>
+    <input class="qty" type="number" min="1" value="1" aria-label="Adet">
+    <span class="line-total">0 TL</span>
+    <button type="button" class="remove-line" aria-label="Kaldır">×</button>
+  `;
+  lineItemsEl.appendChild(row);
+  row.querySelector('.line-product').addEventListener('change', renderAll);
+  row.querySelector('.qty').addEventListener('input', renderAll);
+  row.querySelector('.remove-line').addEventListener('click', () => {
+    row.remove();
+    renderAll();
+  });
+  renderAll();
+}
+
+function renderAll(){
+  let total = 0;
+  const rows = [...lineItemsEl.querySelectorAll('.line-item')];
+
+  rows.forEach(row => {
+    const sku = row.querySelector('.line-product').value;
+    const qty = Math.max(1, parseInt(row.querySelector('.qty').value, 10) || 1);
+    const product = findProduct(sku);
+    const lineTotal = product.price * qty;
+    row.querySelector('.line-total').textContent = fmtTL(lineTotal);
+    total += lineTotal;
+  });
+
+  rows.forEach(row => {
+    const removeBtn = row.querySelector('.remove-line');
+    removeBtn.style.visibility = rows.length > 1 ? 'visible' : 'hidden';
+  });
+
+  if(rows.length === 0){
+    summaryLinesEl.innerHTML = '<div class="summary-empty">Henüz ürün seçilmedi.</div>';
+  } else {
+    summaryLinesEl.innerHTML = rows.map(row => {
+      const sku = row.querySelector('.line-product').value;
+      const qty = row.querySelector('.qty').value;
+      const product = findProduct(sku);
+      return `<div class="summary-line"><span>${product.label} × ${qty}</span><span>${fmtTL(product.price * qty)}</span></div>`;
+    }).join('');
+  }
+
+  summaryTotalEl.textContent = fmtTL(total);
+}
+
+document.getElementById('addLine').addEventListener('click', () => addLine(PRODUCTS[0].sku));
+
+const params = new URLSearchParams(window.location.search);
+const initialSku = params.get('sku');
+addLine(findProduct(initialSku).sku);
+</script>
+</body>
+</html>
