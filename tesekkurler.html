@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="XYATT — Sipariş formu. Ürününü seç, teslimat bilgilerini gir.">
-<title>Sipariş Formu — XYATT</title>
+<meta name="robots" content="noindex">
+<title>Teşekkürler — XYATT</title>
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
 :root{--bg:#07090b;--panel:#0d1114;--line:#20262b;--muted:#89939a;--text:#eef2f4;--acid:#d8ff3e;}
 *{box-sizing:border-box}
@@ -30,59 +31,35 @@ footer{padding:36px 0;color:#69737a;font-size:12px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
 .footer-logo{display:flex;align-items:center;width:125px}.footer-logo img{width:125px;height:auto;display:block}
 
-/* ORDER FORM */
-.order-hero{padding:52px 0 36px}
-.back-link{display:inline-flex;align-items:center;gap:8px;color:#7d878e;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
-.back-link:hover{color:var(--acid)}
-.order-body{padding-top:0;border-bottom:0}
-.order-grid{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
-.order-main{display:flex;flex-direction:column;gap:44px}
-.block-label{font:10px 'DM Mono',monospace;color:var(--acid);letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
 
-.line-item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;flex-wrap:wrap;margin-bottom:12px}
-.line-item select{flex:1;min-width:220px}
-.line-item .qty{width:64px}
-.line-item .line-total{font:700 15px Sora,sans-serif;min-width:88px;text-align:right}
-.remove-line{background:none;border:none;color:#69737a;font-size:20px;line-height:1;cursor:pointer;padding:2px 6px}
-.remove-line:hover{color:#eb5757}
-
-select,input[type=text],input[type=tel],input[type=email],input[type=number],textarea{
-  background:var(--bg);border:1px solid var(--line);color:var(--text);
-  padding:12px 14px;border-radius:10px;font:14px Inter,sans-serif;width:100%;
-}
-select:focus,input:focus,textarea:focus{outline:none;border-color:var(--acid)}
-textarea{resize:vertical;min-height:84px}
-
-.add-line{background:transparent;border:1px dashed #394147;color:#aab2b7;padding:14px 18px;font:700 11px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;text-align:center;border-radius:10px}
-.add-line:hover{border-color:var(--acid);color:var(--acid)}
-
-.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field{display:flex;flex-direction:column;gap:8px;font-size:13px;color:#aab2b7}
-.field.full{grid-column:1/-1}
-
-.order-side{position:sticky;top:98px}
-.summary-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px}
-.summary-line{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#aab2b7;padding:10px 0;border-bottom:1px solid var(--line)}
-.summary-line span:last-child{color:var(--text);white-space:nowrap}
-.summary-empty{color:#69737a;font-size:13px;padding:10px 0}
-.summary-total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font:700 22px Sora,sans-serif}
-.pay-note{margin-top:30px;margin-bottom:12px}
-.pay-btn{width:100%;padding:16px;background:#171b1e;color:#69737a;border:1px solid var(--line);font:800 12px 'DM Mono',monospace;letter-spacing:.08em;border-radius:10px;cursor:not-allowed}
-.pay-explainer{margin-top:12px;font-size:12px;line-height:1.6;color:#69737a}
-
-.bank-btn{background:var(--acid);color:#07090b;border:1px solid var(--acid);cursor:pointer}
-.bank-btn:hover{filter:brightness(1.08)}
-.bank-btn:disabled{opacity:.6;cursor:wait}
-.bank-err{display:none;margin:12px 0 0;font-size:13px;line-height:1.5;color:#ff6b6b}
-
+/* THANK YOU */
+.thanks{padding:64px 0 80px;border-bottom:0}
+.thanks-wrap{max-width:760px;margin:auto}
+.check{width:56px;height:56px;border-radius:50%;border:1px solid var(--acid);color:var(--acid);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px}
+.thanks h2{margin-top:12px}
+.order-no{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:28px 0 18px}
+.order-no small{display:block;font:10px 'DM Mono',monospace;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.order-no strong{font:700 clamp(20px,3.4vw,28px) 'DM Mono',monospace;color:var(--acid);letter-spacing:.02em;word-break:break-all}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;margin-bottom:18px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;color:#aab2b7}
+.row:last-of-type{border-bottom:0}
+.row b{color:var(--text);text-align:right;font-family:'DM Mono',monospace;font-size:13px;word-break:break-all}
+.copy-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.copy-row button{flex:1;min-width:150px;background:transparent;border:1px solid #394147;color:#cfd6da;padding:12px 10px;font:700 10px 'DM Mono',monospace;letter-spacing:.06em;border-radius:8px;cursor:pointer}
+.copy-row button:hover{border-color:var(--acid);color:var(--acid)}
+.warn{margin-top:16px;padding:14px 16px;border:1px solid #4a5a14;background:rgba(216,255,62,.06);border-radius:10px;font-size:13px;line-height:1.6;color:#e4efb8}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 18px 44px;font-size:14px;line-height:1.65;color:#aab2b7}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border:1px solid #394147;border-radius:50%;display:flex;align-items:center;justify-content:center;font:11px 'DM Mono',monospace;color:var(--acid)}
+.steps b{color:var(--text)}
+.actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+#fallback{display:none}
 @media(max-width:900px){
 .container{width:min(100% - 32px,700px)}
 header{height:70px}
 nav{display:none}
 section{padding:48px 0}
-.order-grid{grid-template-columns:1fr}
-.order-side{position:static}
-.field-grid{grid-template-columns:1fr}
 }
 @media(max-width:560px){
 .container{width:calc(100% - 24px)}
@@ -101,49 +78,52 @@ section{padding:48px 0}
 </header>
 
 <main>
-  <section class="order-hero">
-    <div class="container">
-      <a class="back-link" href="index.html#modeller">← MODELLERE DÖN</a>
-      <div class="eyebrow">SİPARİŞ FORMU</div>
-      <h2>Siparişini<br>tamamla.</h2>
-      <p class="lead">Ürün seçimini onayla ve teslimat bilgilerini gir. Siparişin ardından havale/EFT ile ödeme bilgilerini hem ekranda göreceksin hem e-posta ile alacaksın.</p>
-    </div>
-  </section>
+  <section class="thanks">
+    <div class="container thanks-wrap">
 
-  <section class="order-body">
-    <div class="container order-grid">
-      <div class="order-main">
-        <div>
-          <div class="block-label">Ürünler</div>
-          <div id="lineItems"></div>
-          <button type="button" class="add-line" id="addLine">+ BAŞKA ÜRÜN EKLE</button>
+      <div id="content" style="display:none">
+        <div class="check">✓</div>
+        <div class="eyebrow">Sipariş alındı</div>
+        <h2>Teşekkürler!</h2>
+        <p class="lead">Siparişini aldık. Sipariş işleme alınması için aşağıdaki banka hesabına havale/EFT yapman yeterli.</p>
+
+        <div class="order-no">
+          <div><small>Sipariş numaran</small><strong id="oNo"></strong></div>
         </div>
 
-        <div>
-          <div class="block-label">Teslimat Bilgileri</div>
-          <div class="field-grid">
-            <label class="field">Ad Soyad<input type="text" id="fullName" placeholder="Adınız Soyadınız"></label>
-            <label class="field">Telefon<input type="tel" id="phone" placeholder="05XX XXX XX XX"></label>
-            <label class="field full">E-posta<input type="email" id="email" placeholder="ornek@eposta.com"></label>
-            <label class="field">İl<input type="text" id="city" placeholder="İstanbul"></label>
-            <label class="field">İlçe<input type="text" id="district" placeholder="Kadıköy"></label>
-            <label class="field full">Açık Adres<textarea id="address" placeholder="Mahalle, sokak, bina no, daire no..."></textarea></label>
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:10px">Banka bilgileri</div>
+          <div class="row"><span>Ödenecek tutar</span><b id="oTotal"></b></div>
+          <div class="row"><span>Hesap sahibi</span><b id="oHolder"></b></div>
+          <div class="row"><span>IBAN</span><b id="oIban"></b></div>
+          <div class="copy-row">
+            <button type="button" id="cpNo">SİPARİŞ NO KOPYALA</button>
+            <button type="button" id="cpIban">IBAN KOPYALA</button>
           </div>
+          <div class="warn"><b>Önemli:</b> Havale açıklamasına mutlaka sipariş numaranı (<span id="oNo2"></span>) yaz. Böylece ödemeni hızlıca eşleştirebiliriz.</div>
         </div>
+
+        <div class="card">
+          <div class="eyebrow" style="margin-bottom:16px">Sonraki adımlar</div>
+          <ol class="steps">
+            <li><b>Havaleyi yap.</b> Yukarıdaki IBAN'a, açıklamaya sipariş numaranı yazarak tutarı gönder.</li>
+            <li><b>E-postanı kontrol et.</b> Sipariş numaran ve banka bilgilerin <b id="oEmail">e-posta adresine</b> gönderildi. Gelen kutunda göremezsen spam / gereksiz klasörüne de bak.</li>
+            <li><b>Dekontu gönder.</b> Ödeme dekontunu sipariş numaranla birlikte <b>destek@xyatt.com.tr</b> adresine ilet (veya aldığın e-postaya yanıtla).</li>
+            <li><b>Takip bağlantını al.</b> Ödemen onaylandığında takip bağlantını e-posta ile göndereceğiz. Teslimat yaklaşık 15 gündür.</li>
+          </ol>
+        </div>
+
+        <div class="actions"><a class="btn" href="index.html">← ANA SAYFAYA DÖN</a></div>
       </div>
 
-      <aside class="order-side">
-        <div class="summary-card">
-          <div class="block-label">Sipariş Özeti</div>
-          <div id="summaryLines"></div>
-          <div class="summary-total"><span>Toplam</span><span id="summaryTotal">0 TL</span></div>
-          <div class="block-label pay-note">Ödeme Yöntemi</div>
-          <button type="button" class="pay-btn bank-btn" id="btnBank">HAVALE / EFT İLE SİPARİŞ VER</button>
-          <p class="bank-err" id="bankErr" role="alert"></p>
-          <p class="pay-explainer" id="bankExplainer">Siparişi tamamladığında sipariş numaranı ve banka bilgilerini gösteren bir sayfaya yönlendirilirsin. Aynı bilgiler e-posta adresine de gönderilir.</p>
+      <div id="fallback">
+        <div class="check">✓</div>
+        <div class="eyebrow">Sipariş alındı</div>
+        <h2>Teşekkürler!</h2>
+        <p class="lead">Sipariş bilgilerin (sipariş numarası ve banka bilgileri) e-posta adresine gönderildi. Gelen kutunda göremezsen spam / gereksiz klasörüne de bak. Yardım için <b>destek@xyatt.com.tr</b> adresine yazabilirsin.</p>
+        <div class="actions"><a class="btn" href="index.html">← ANA SAYFAYA DÖN</a></div>
+      </div>
 
-                  </div>
-      </aside>
     </div>
   </section>
 </main>
@@ -153,137 +133,37 @@ section{padding:48px 0}
 </footer>
 
 <script>
-const PRODUCTS = [
-  {sku:'double-15-6', label:'DOUBLE SCREEN — 15.6″', price:8400},
-  {sku:'triple-14',   label:'TRIPLE SCREEN — 14″',   price:17500},
-  {sku:'triple-15-6', label:'TRIPLE SCREEN — 15.6″', price:19000},
-  {sku:'triple-18-5', label:'TRIPLE SCREEN — 18.5″', price:23500},
-  {sku:'quad-14',     label:'QUAD SCREEN — 14″',     price:22800},
-  {sku:'quad-15-6',   label:'QUAD SCREEN — 15.6″',   price:25500},
-  {sku:'quad-18-5',   label:'QUAD SCREEN — 18.5″',   price:29200},
-];
+(function(){
+  // Bank details are the same for every customer, so they live here and never depend on browser storage
+  var BANK = { holder: 'Yasser Omar Mohamed Attia', iban: 'TR32 0001 0090 1007 6176 9050 01' };
 
-function findProduct(sku){ return PRODUCTS.find(p => p.sku === sku) || PRODUCTS[0]; }
-function fmtTL(n){ return n.toLocaleString('tr-TR') + ' TL'; }
-
-const lineItemsEl = document.getElementById('lineItems');
-const summaryLinesEl = document.getElementById('summaryLines');
-const summaryTotalEl = document.getElementById('summaryTotal');
-let lineCount = 0;
-
-function optionsHTML(selectedSku){
-  return PRODUCTS.map(p =>
-    `<option value="${p.sku}" ${p.sku===selectedSku?'selected':''}>${p.label} — ${fmtTL(p.price)}</option>`
-  ).join('');
-}
-
-function addLine(sku){
-  lineCount++;
-  const id = 'line' + lineCount;
-  const row = document.createElement('div');
-  row.className = 'line-item';
-  row.dataset.id = id;
-  row.innerHTML = `
-    <select class="line-product">${optionsHTML(sku)}</select>
-    <input class="qty" type="number" min="1" value="1" aria-label="Adet">
-    <span class="line-total">0 TL</span>
-    <button type="button" class="remove-line" aria-label="Kaldır">×</button>
-  `;
-  lineItemsEl.appendChild(row);
-  row.querySelector('.line-product').addEventListener('change', renderAll);
-  row.querySelector('.qty').addEventListener('input', renderAll);
-  row.querySelector('.remove-line').addEventListener('click', () => {
-    row.remove();
-    renderAll();
-  });
-  renderAll();
-}
-
-function renderAll(){
-  let total = 0;
-  const rows = [...lineItemsEl.querySelectorAll('.line-item')];
-
-  rows.forEach(row => {
-    const sku = row.querySelector('.line-product').value;
-    const qty = Math.max(1, parseInt(row.querySelector('.qty').value, 10) || 1);
-    const product = findProduct(sku);
-    const lineTotal = product.price * qty;
-    row.querySelector('.line-total').textContent = fmtTL(lineTotal);
-    total += lineTotal;
-  });
-
-  rows.forEach(row => {
-    const removeBtn = row.querySelector('.remove-line');
-    removeBtn.style.visibility = rows.length > 1 ? 'visible' : 'hidden';
-  });
-
-  if(rows.length === 0){
-    summaryLinesEl.innerHTML = '<div class="summary-empty">Henüz ürün seçilmedi.</div>';
-  } else {
-    summaryLinesEl.innerHTML = rows.map(row => {
-      const sku = row.querySelector('.line-product').value;
-      const qty = row.querySelector('.qty').value;
-      const product = findProduct(sku);
-      return `<div class="summary-line"><span>${product.label} × ${qty}</span><span>${fmtTL(product.price * qty)}</span></div>`;
-    }).join('');
-  }
-
-  summaryTotalEl.textContent = fmtTL(total);
-}
-
-document.getElementById('addLine').addEventListener('click', () => addLine(PRODUCTS[0].sku));
-
-const params = new URLSearchParams(window.location.search);
-const initialSku = params.get('sku');
-addLine(findProduct(initialSku).sku);
-
-// ===== Havale / EFT sipariş gönderimi =====
-const XYATT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxPAMGyN-87Q6hFJ5kJvQG1MMIPs_bzuffi_Et07fBqC9vXw61ytde-YtnVDLi0mG_z/exec';
-
-function getOrder(){
-  const v = id => document.getElementById(id).value.trim();
-  const items = [...lineItemsEl.querySelectorAll('.line-item')].map(row => ({
-    id: row.querySelector('.line-product').value,
-    qty: Math.max(1, parseInt(row.querySelector('.qty').value, 10) || 1)
-  }));
-  return { name:v('fullName'), phone:v('phone'), email:v('email'), il:v('city'), ilce:v('district'), address:v('address'), items };
-}
-
-const bankBtn = document.getElementById('btnBank');
-const bankErr = document.getElementById('bankErr');
-function showErr(msg){ bankErr.textContent = msg; bankErr.style.display = 'block'; }
-
-bankBtn.addEventListener('click', async () => {
-  bankErr.style.display = 'none';
-  const o = getOrder();
-  if(!o.items.length) return showErr('Lütfen en az bir ürün seçin.');
-  if(!o.name) return showErr('Lütfen ad soyad girin.');
-  if(o.phone.replace(/\D/g,'').length < 10) return showErr('Lütfen geçerli bir telefon numarası girin.');
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.email)) return showErr('Lütfen geçerli bir e-posta adresi girin.');
-  if(!o.il || !o.ilce) return showErr('Lütfen il ve ilçe girin.');
-  if(o.address.length < 10) return showErr('Lütfen açık adresinizi eksiksiz girin.');
-
-  const label = bankBtn.textContent;
-  bankBtn.disabled = true; bankBtn.textContent = 'GÖNDERİLİYOR…';
-  try{
-    // text/plain: Apps Script'in CORS preflight istememesi için
-    const res = await fetch(XYATT_ENDPOINT, { method:'POST', body: JSON.stringify(o) });
-    const r = await res.json();
-    if(!r.ok) throw new Error(r.error || 'error');
-    // save the result for the thank-you page and go there
-    try{
-      sessionStorage.setItem('xyatt_order', JSON.stringify({
-        orderNo: r.orderNo, total: r.total, holder: r.holder, iban: r.iban, email: o.email
-      }));
-    }catch(_){}
-    window.location.href = 'tesekkurler.html?no=' + encodeURIComponent(r.orderNo) + '&t=' + encodeURIComponent(r.total);
+  var data = null;
+  try{ data = JSON.parse(sessionStorage.getItem('xyatt_order') || 'null'); }catch(_){}
+  var q = new URLSearchParams(window.location.search);
+  var no = (data && data.orderNo) || q.get('no');
+  var total = (data && data.total) || q.get('t');
+  if(!no || !/^[0-9]{6,20}$/.test(String(no))){
+    document.getElementById('fallback').style.display = 'block';
     return;
-  }catch(e){
-    showErr('Sipariş gönderilemedi. Bilgileri kontrol edip tekrar deneyin. Sorun devam ederse destek@xyatt.com.tr adresine yazın.');
-    bankBtn.disabled = false; bankBtn.textContent = label;
   }
-});
+  data = { orderNo: String(no), total: Number(total) || 0, holder: BANK.holder, iban: BANK.iban, email: data && data.email };
+  var tl = new Intl.NumberFormat('tr-TR');
+  function set(id, t){ document.getElementById(id).textContent = t; }
+  set('oNo', data.orderNo);
+  set('oNo2', data.orderNo);
+  if(data.total){ set('oTotal', tl.format(data.total) + ' TL'); } else { document.getElementById('oTotal').parentNode.style.display = 'none'; }
+  set('oHolder', data.holder);
+  set('oIban', data.iban);
+  if(data.email) set('oEmail', data.email);
+  document.getElementById('content').style.display = 'block';
 
+  function copy(text, btn){
+    function done(){ var old = btn.textContent; btn.textContent = 'KOPYALANDI ✔'; setTimeout(function(){ btn.textContent = old; }, 1500); }
+    if(navigator.clipboard){ navigator.clipboard.writeText(text).then(done); }
+  }
+  document.getElementById('cpNo').addEventListener('click', function(){ copy(data.orderNo, this); });
+  document.getElementById('cpIban').addEventListener('click', function(){ copy(String(data.iban).replace(/\s/g,''), this); });
+})();
 </script>
 </body>
 </html>
