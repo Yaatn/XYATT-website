@@ -52,6 +52,9 @@ footer{padding:36px 0;color:#69737a;font-size:12px}
 .stage.current .stage-body{color:var(--text);font-weight:700}
 .tag{display:inline-block;margin-left:10px;padding:3px 8px;border:1px solid var(--acid);border-radius:6px;font:10px 'DM Mono',monospace;color:var(--acid);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;font-weight:500}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(216,255,62,.45)}70%{box-shadow:0 0 0 12px rgba(216,255,62,0)}100%{box-shadow:0 0 0 0 rgba(216,255,62,0)}}
+.eta{margin:-14px 0 30px;font-size:14px;color:#aab2b7}
+.eta b{color:var(--acid);font-weight:700}
+.stage-note{margin-top:6px;font-size:13px;font-weight:400;line-height:1.5;color:#aab2b7}
 .notice{margin-top:30px;padding:18px 20px;border:1px solid var(--line);background:var(--panel);border-radius:12px;font-size:14px;line-height:1.65;color:#aab2b7}
 .notice b{color:var(--text)}
 .notice.good{border-color:#4a5a14;background:rgba(216,255,62,.06);color:#e4efb8}
@@ -88,6 +91,7 @@ section{padding:48px 0}
       <div class="eyebrow">Sipariş takibi</div>
       <h2>Siparişin nerede?</h2>
       <div class="order-chip" id="chip" style="display:none">SİPARİŞ NO <b id="orderNo"></b></div>
+      <div class="eta" id="eta" style="display:none">Tahmini teslimat: <b>~15 gün içinde</b></div>
 
       <div class="state" id="loading">Sipariş durumu yükleniyor…</div>
 
@@ -110,14 +114,20 @@ section{padding:48px 0}
 
   // The 7 fulfilment stages (Turkish, customer-facing)
   var STAGES = [
-    'Sipariş Onaylandı',
-    'Fabrikada Hazırlık Sırasında',
-    'Fabrikadan Sevk Edildi',
-    'Uluslararası Taşıma',
-    'XYATT Lojistik Merkezi\'ne Ulaştı — Antalya',
-    'Teslimat Adresine Yolda',
+    'Siparişin Onaylandı',
+    'Fabrikada Hazırlanıyor',
+    'Fabrikadan Yola Çıktı',
+    'Uluslararası Yolculukta',
+    'Antalya Lojistik Merkezimize Ulaştı',
+    'Adresine Yolda',
     'Teslim Edildi'
   ];
+
+  // Short expectation line, shown under the stage only while it is the current one
+  var NOTES = {
+    2: 'Bu aşama genellikle 5–7 gün sürer.',
+    4: 'Bu aşama genellikle 3–5 gün sürer.'
+  };
 
   var el = function(id){ return document.getElementById(id); };
 
@@ -154,12 +164,19 @@ section{padding:48px 0}
         tag.className = 'tag';
         tag.textContent = 'Şu an burada';
         body.appendChild(tag);
+        if(NOTES[i]){
+          var note = document.createElement('div');
+          note.className = 'stage-note';
+          note.textContent = NOTES[i];
+          body.appendChild(note);
+        }
       }
       li.appendChild(dot); li.appendChild(body);
       list.appendChild(li);
     }
     el('loading').style.display = 'none';
     list.style.display = 'block';
+    el('eta').style.display = (stage < 7) ? 'block' : 'none';
 
     var n = el('notice');
     if(stage === 7){
